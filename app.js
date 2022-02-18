@@ -1,9 +1,11 @@
-const { response } = require("express")
 const express = require("express")
 const app = express()
+
+// use the express-static middleware 
+app.use(express.static("public"))
 
 app.get("/", (req, res) =>{
     res.sendFile(__dirname + "/public/index.html")
 })
 
-app.listen(8080, () => console.log("Server listening on port ", 8080))
+app.listen(process.env.PORT || "3000", () => {console.log('Server is running!')})
