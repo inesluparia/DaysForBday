@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bday Count</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+</head>
+
+<body>
+    <header id="header-container">
+        <h1>Guess how many 
+            <span style="color: white; font-size:130%">days left</span>
+            <br> for your 
+            <span style="color:palevioletred; font-size:150%">Bday</span>!
+        </h1>
+    </header>
+    <div id="results-container">
+        <h1 id="result-header">There's only 
+            <span id="days-left-result" style="color: white; font-size:130%"></span>
+            <br>  left for your 
+            <span style="color:palevioletred; font-size:150%">Bday</span>!
+        <br><br>
+        </h1>
+        <section>
+            <h3>Today you are <span style="color: rgb(255, 231, 152); font-size:150%" id="days-old-result"></span> days old.</h3>
+        </section>
+        <section>
+            <h3>On <span style="color: rgba(217, 255, 2, 0.815); font-size:180%" id="15K-days-result"></span> you will turn 15.000 days old.</h3>
+        </section>
+        <section>
+            <h3>Also <span style="color: aqua; font-size:110%; font-weight:bold" id="people-result"></span> people were born the same day as you.</h3>
+        </section>
+    </div>
+    <div id="input-container">
+        <label for="b-date">Select your birth date</label><br>
+        <input name="b-date" id="b-date" type="date">
+        <button onclick="countDays()">Check it out</button>   
+    </div>      
+</body>
+
+<script>
+    function countDays(){
+        let bDate = new Date(document.getElementById("b-date").value)
+        let now = new Date()
+        let today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+        let bDay = new Date(2022, bDate.getMonth(), bDate.getDate())
+        
+        //check if your birthday is today or next year and adjust
+        if (bDay-today < 0) { bDay = new Date(2023, bDate.getMonth(), bDate.getDate()) }
+
+        //render results
+        document.getElementById("days-left-result").innerText=Math.round((bDay-today)/1000/60/60/24) + ' days'
+        document.getElementById("header-container").style.display="none"
+        document.getElementById("results-container").style.display="block"
+
+        //calculate fun facts
+        //Days old
+        let daysOld = Math.round((today - bDate)/1000/60/60/24)
+        document.getElementById("days-old-result").innerText=daysOld.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+        
+        //Round date
+        let roundDate = new Date(document.getElementById("b-date").value)
+        roundDate.setDate(bDate.getDate() + 15000)
+        document.getElementById("15K-days-result").innerText= roundDate.toDateString().replace(/^\S+\s/,'')
+
+        //Random people with same birthdate
+        let random = Math.floor(Math.random() * (4200000 - 3600000 + 1)) + 3600000
+        document.getElementById("people-result").innerText = random.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+    }  
+</script>
+
+<style>
+    html  {
+        height: 100%; 
+        font-family: "Lato", sans-serif;  
+    }
+
+    body {
+        /* height: 100%;  */
+        margin-left: 180px;
+        margin-top: 150px;
+        background-image: url(https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-birthday-instagram-captions-1584723902.jpg);     
+        background-position: center;
+        background-size: cover;
+    }
+
+    h1 {
+        font-size:40px;
+    }
+
+    #results-container{
+        display: none;
+    }
+
+    #input-container {
+        margin-top: 120px;
+    }
+
+    input {
+        padding:15px;
+        margin-right:50px;
+    }
+
+    button {
+        font-size: large;
+        font-weight: bold;
+        color: palevioletred;
+        margin: 15px;
+        padding: 18px;
+        border: none;
+        background-color: white;
+    }
+
+    button:hover{
+        /* background-color: chocolate; */
+        background-color: palevioletred;
+        color: white;
+    }
+</style>
+</html>

@@ -1,0 +1,6 @@
+{
+    "dependencies": {
+        "express": "^4.17.2",
+        "numeral": "^2.0.6"
+    }
+}
