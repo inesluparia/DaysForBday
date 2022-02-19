@@ -1,0 +1,47 @@
+html  {
+    height: 100%; 
+    font-family: "Lato", sans-serif;  
+}
+
+body {
+    /* height: 100%;  */
+    margin-left: 8%;
+    margin-top: 8%;
+    background-image: url(https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-birthday-instagram-captions-1584723902.jpg);     
+    background-position: center;
+    background-size: cover;
+}
+
+h1 {
+    font-size: 3.5em;
+}
+
+#results-container{
+    display: none;
+    width: 50%;
+}
+
+#input-container {
+    margin-top: 5%;
+}
+
+input {
+    padding:15px;
+    margin-right:5%;
+}
+
+button {
+    font-size: large;
+    font-weight: bold;
+    color: palevioletred;
+    margin: 15px;
+    padding: 18px;
+    border: none;
+    background-color: white;
+}
+
+button:hover{
+    /* background-color: chocolate; */
+    background-color: palevioletred;
+    color: white;
+}
